@@ -50,9 +50,9 @@ const Play: NextPage<Props> = ({ movies, tags }) => {
                           <svg
                             fill="currentColor"
                             stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             className="w-4 h-4 text-red-500"
                             viewBox="0 0 24 24"
                           >
@@ -61,9 +61,9 @@ const Play: NextPage<Props> = ({ movies, tags }) => {
                           <svg
                             fill="currentColor"
                             stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             className="w-4 h-4 text-red-500"
                             viewBox="0 0 24 24"
                           >
@@ -72,9 +72,9 @@ const Play: NextPage<Props> = ({ movies, tags }) => {
                           <svg
                             fill="currentColor"
                             stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             className="w-4 h-4 text-red-500"
                             viewBox="0 0 24 24"
                           >
@@ -83,9 +83,9 @@ const Play: NextPage<Props> = ({ movies, tags }) => {
                           <svg
                             fill="currentColor"
                             stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             className="w-4 h-4 text-red-500"
                             viewBox="0 0 24 24"
                           >
@@ -94,9 +94,9 @@ const Play: NextPage<Props> = ({ movies, tags }) => {
                           <svg
                             fill="none"
                             stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             className="w-4 h-4 text-red-500"
                             viewBox="0 0 24 24"
                           >
@@ -110,9 +110,9 @@ const Play: NextPage<Props> = ({ movies, tags }) => {
                           <a className="text-gray-500">
                             <svg
                               fill="currentColor"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                               className="w-5 h-5"
                               viewBox="0 0 24 24"
                             >
@@ -122,9 +122,9 @@ const Play: NextPage<Props> = ({ movies, tags }) => {
                           <a className="ml-2 text-gray-500">
                             <svg
                               fill="currentColor"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                               className="w-5 h-5"
                               viewBox="0 0 24 24"
                             >
@@ -134,9 +134,9 @@ const Play: NextPage<Props> = ({ movies, tags }) => {
                           <a className="ml-2 text-gray-500">
                             <svg
                               fill="currentColor"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                               className="w-5 h-5"
                               viewBox="0 0 24 24"
                             >
