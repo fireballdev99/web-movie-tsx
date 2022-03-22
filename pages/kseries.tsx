@@ -10,8 +10,40 @@ import {
   InferGetStaticPropsType,
 } from "next";
 import Link from "next/link";
-import Head from "next/head";
-import { Movie, Tag } from "../models/Model";
+import Image from "next/image";
+
+type TagsDetail = {
+  status: string;
+  type: string;
+  name: string;
+  tagId: number;
+};
+
+type Movie = {
+  subtitles: [];
+  categories: [];
+  tags: number[];
+  status: string;
+  timeDuration: number;
+  coverImageUrl: string;
+  productTotal: number;
+  description: string;
+  name: string;
+  productId: number;
+  updatedAt: Date;
+  createdAt: Date;
+  tagsDetail: TagsDetail[];
+};
+
+type Tag = {
+  _id: string;
+  status: string;
+  type: string;
+  name: string;
+  tagId: number;
+  updatedAt: Date;
+  createdAt: Date;
+};
 
 export const getStaticProps = async () => {
   const resMov = await getAllMovies();
@@ -27,17 +59,12 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home = ({
+const kseries = ({
   movies,
   tags,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout>
-      <Head>
-        <title>RSU Movie</title>
-        <meta name="description" content="ดูหนังออนไลน์ม.รังสิต" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <div className="container py-5 mx-auto">
         <header className="p-5">
           <h1 className="text-white text-xl">หนังอัพเดทใหม่ </h1>
@@ -50,7 +77,7 @@ const Home = ({
                   key={item.productId}
                   className="w-66 md:w-44 lg:w-44 xl:w-52 2lx:w-56 relative rounded overflow-hidden shadow-lg m-4 md:m-1 "
                 >
-                  <Link href={`/play/${item.productId}`}>
+                  <Link href="/">
                     <a>
                       <div className="grid active:-translate-y-1 transition ease-in-out delay-100 hover:-translate-y-2 hover:scale-110 duration-200 bg-black bg-opacity-50 place-items-center h-full w-full opacity-0 hover:opacity-100 absolute">
                         <BsFillPlayFill size={70} />
@@ -81,15 +108,13 @@ const Home = ({
               </div>
               <div className="mt-0 w-80 lg:w-52 xl:w-64 pl-12 pb-2">
                 <ul className="text-lg font-bold text-gray-300">
-                  {tags.map((item) => (
-                    <Link key={item.tagId} href="/">
-                      <a>
-                        <li className="border-b-[1px] border-b-neutral-600 p-2 max-w-5 hover:text-red-700">
-                          {item.name}
-                        </li>
-                      </a>
-                    </Link>
-                  ))}
+                  <Link href="/">
+                    <a>
+                      <li className="border-b-[1px] border-b-neutral-600 p-2 max-w-5 hover:text-red-700">
+                        ชื่อ
+                      </li>
+                    </a>
+                  </Link>
                 </ul>
               </div>
             </div>
@@ -100,4 +125,4 @@ const Home = ({
   );
 };
 
-export default Home;
+export default kseries;
