@@ -26,19 +26,19 @@ function Nav() {
   const navItems: navBar[] = [
     {
       name: "ซีรีย์เกาหลี",
-      path: "/",
+      path: "/kseries",
       class: classNavMenu.classNav,
       classSm: classNavMenu.classNavSm,
     },
     {
       name: "ซีรีย์ฝรั่ง",
-      path: "/",
+      path: "/wseries",
       class: classNavMenu.classNav,
       classSm: classNavMenu.classNavSm,
     },
     {
       name: "ภาพยนตร์",
-      path: "/",
+      path: "/movies",
       class: classNavMenu.classNav,
       classSm: classNavMenu.classNavSm,
     },

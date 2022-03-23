@@ -1,25 +1,23 @@
-/* eslint-disable @next/next/no-img-element */
-import React from "react";
-import Layout from "../components/Layout";
-import { BsFillPlayFill } from "react-icons/bs";
-import { getAllMovies, getAllTags } from "../pages/api/api";
-import {
-  GetStaticProps,
-  GetStaticPaths,
-  GetServerSideProps,
-  InferGetStaticPropsType,
-  NextPage,
-} from "next";
-import Link from "next/link";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import { Movie, Tag } from "../models/Model";
+import Link from "next/link";
+import { useRouter, NextRouter } from "next/router";
+import React from "react";
+import { BsFillPlayFill } from "react-icons/bs";
+import Layout from "../../components/Layout";
+import { Movie, Tag } from "../../models/Model";
+import { findMovieCategory, findOneTags, getAllTags } from "../api/api";
 
 interface Props {
   movies: Movie[];
   tags: Tag[];
+  tag: Tag;
+  message: string;
 }
 
-const Home: NextPage<Props> = ({ movies, tags }) => {
+const wseries: NextPage<Props> = ({ movies, tags, tag, message }) => {
+  const router: NextRouter = useRouter();
+  const { id } = router.query;
   return (
     <Layout>
       <Head>
@@ -29,7 +27,7 @@ const Home: NextPage<Props> = ({ movies, tags }) => {
       </Head>
       <div className="container py-5 mx-auto">
         <header className="p-5">
-          <h1 className="text-white text-xl">หนังอัพเดทใหม่ </h1>
+          <h1 className="text-white text-xl">{tag.name}</h1>
         </header>
         <main className=" grid grid-cols-12 gap-2 text-white">
           <div className="col-span-12 md:col-span-12 p-2 lg:col-span-9 bg-stone-900 block bg-opacity-70 h-max">
@@ -51,7 +49,7 @@ const Home: NextPage<Props> = ({ movies, tags }) => {
                       />
                       <div
                         className="absolute w-full max-h-20 py-1 bottom-0 inset-x-0 bg-stone-900 bg-opacity-80 text-white text-xs text-center leading-2
-                      "
+                  "
                       >
                         <h2 className="mb-3 pt-2 text-sm font-base tracking-tight text-white">
                           {item.name}
@@ -89,18 +87,33 @@ const Home: NextPage<Props> = ({ movies, tags }) => {
   );
 };
 
-export default Home;
+export default wseries;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const resMov = await getAllMovies();
+export const getStaticPaths: GetStaticPaths = async () => {
+  const resMov = await getAllTags();
+  const tags: Tag[] = await resMov;
+
+  const paths = tags.map((items) => ({
+    params: { id: items.tagId.toString() },
+  }));
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { id }: any = context.params;
+  const resMov = await findMovieCategory(id);
   const resTag = await getAllTags();
-  const movies: Movie[] = await resMov;
+  const resOneTag = await findOneTags(id);
+  const movies: Movie = await resMov;
   const tags: Tag[] = await resTag;
+  const tag: Tag = await resOneTag;
 
   return {
     props: {
       movies,
       tags,
+      tag,
     },
   };
 };

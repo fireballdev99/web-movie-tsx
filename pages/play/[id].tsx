@@ -183,7 +183,7 @@ const Play: NextPage<Props> = ({ movies, tags }) => {
               <div className="mt-0 w-80 lg:w-52 xl:w-64 pl-12 pb-2">
                 <ul className="text-lg font-bold text-gray-300">
                   {tags.map((item) => (
-                    <Link key={item.tagId} href="/">
+                    <Link key={item.tagId} href={`/tags/${item.tagId}`}>
                       <a>
                         <li className="border-b-[1px] border-b-neutral-600 p-2 max-w-5 hover:text-red-700">
                           {item.name}

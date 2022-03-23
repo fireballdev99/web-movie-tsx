@@ -2,7 +2,7 @@
 import React from "react";
 import Layout from "../components/Layout";
 import { BsFillPlayFill } from "react-icons/bs";
-import { getAllMovies, getAllTags } from "../pages/api/api";
+import { findMovie, findMovieCategory, getAllTags } from "./api/api";
 import {
   GetStaticProps,
   GetStaticPaths,
@@ -19,7 +19,7 @@ interface Props {
   tags: Tag[];
 }
 
-const Home: NextPage<Props> = ({ movies, tags }) => {
+const MoviesPage: NextPage<Props> = ({ movies, tags }) => {
   return (
     <Layout>
       <Head>
@@ -51,7 +51,7 @@ const Home: NextPage<Props> = ({ movies, tags }) => {
                       />
                       <div
                         className="absolute w-full max-h-20 py-1 bottom-0 inset-x-0 bg-stone-900 bg-opacity-80 text-white text-xs text-center leading-2
-                      "
+                  "
                       >
                         <h2 className="mb-3 pt-2 text-sm font-base tracking-tight text-white">
                           {item.name}
@@ -89,14 +89,13 @@ const Home: NextPage<Props> = ({ movies, tags }) => {
   );
 };
 
-export default Home;
+export default MoviesPage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const resMov = await getAllMovies();
+  const resMov = await findMovieCategory(1028);
   const resTag = await getAllTags();
-  const movies: Movie[] = await resMov;
+  const movies: Movie = await resMov;
   const tags: Tag[] = await resTag;
-
   return {
     props: {
       movies,
