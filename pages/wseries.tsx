@@ -2,24 +2,16 @@
 import React from "react";
 import Layout from "../components/Layout";
 import { BsFillPlayFill } from "react-icons/bs";
-import { findMovie, findMovieCategory, getAllTags } from "./api/api";
-import {
-  GetStaticProps,
-  GetStaticPaths,
-  GetServerSideProps,
-  InferGetStaticPropsType,
-  NextPage,
-} from "next";
+import { findMovieCategory, getAllTags } from "./api/api";
+import { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import Head from "next/head";
 import { Movie, Tag } from "../models/Model";
-
 interface Props {
   movies: Movie[];
   tags: Tag[];
 }
-
-const wseries: NextPage<Props> = ({ movies, tags }) => {
+const Wseries: NextPage<Props> = ({ movies, tags }) => {
   return (
     <Layout>
       <Head>
@@ -89,7 +81,7 @@ const wseries: NextPage<Props> = ({ movies, tags }) => {
   );
 };
 
-export default wseries;
+export default Wseries;
 
 export const getStaticProps: GetStaticProps = async () => {
   const resMov = await findMovieCategory(1029);

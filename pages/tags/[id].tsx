@@ -15,7 +15,7 @@ interface Props {
   message: string;
 }
 
-const wseries: NextPage<Props> = ({ movies, tags, tag, message }) => {
+const Tags: NextPage<Props> = ({ movies, tags, tag, message }) => {
   const router: NextRouter = useRouter();
   const { id } = router.query;
   return (
@@ -87,7 +87,7 @@ const wseries: NextPage<Props> = ({ movies, tags, tag, message }) => {
   );
 };
 
-export default wseries;
+export default Tags;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const resMov = await getAllTags();
